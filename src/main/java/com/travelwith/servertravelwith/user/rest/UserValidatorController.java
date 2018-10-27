@@ -23,13 +23,13 @@ import javax.validation.Valid;
 public class UserValidatorController {
 
     public static final String CHECK_EMAIL_URL = "/users/check/email";
-    public static final String CHECK_USERNAME_URL = "/users/check/userName";
-    public static final String CHECK_PHONE_URL = "/users/check/phoneNumber";
+    public static final String CHECK_USERNAME_URL = "/users/check/username";
+    public static final String CHECK_PHONE_URL = "/users/check/phonenumber";
 
     @Autowired
     private UserService userService;
 
-    @PostMapping("/users/check/userName")
+    @PostMapping(CHECK_USERNAME_URL)
     public ResponseEntity isUsernameValid(@Valid @RequestBody UserRest requestedUser) {
         if (requestedUser.getUserName() == null) {
             return ResponseEntity.status(500).build();
@@ -37,7 +37,7 @@ public class UserValidatorController {
         return createResponseForValidation(userService.isUserNameValid(requestedUser));
     }
 
-    @PostMapping("/users/check/email")
+    @PostMapping(CHECK_EMAIL_URL)
     public ResponseEntity<UserCreationStatus> isEmailValid(@Valid @RequestBody UserRest requestedUser) {
         if (requestedUser.getEmail() == null) {
             return ResponseEntity.status(500).build();
@@ -45,7 +45,7 @@ public class UserValidatorController {
         return createResponseForValidation(userService.isEmailValid(requestedUser));
     }
 
-    @PostMapping("/users/check/phoneNumber")
+    @PostMapping(CHECK_PHONE_URL)
     public ResponseEntity<UserCreationStatus> isPhoneNumberValid(@Valid @RequestBody UserRest requestedUser) {
         if (requestedUser.getPhoneNumber() == null) {
             return ResponseEntity.status(500).build();
