@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2018. 
+ * Travel With
+ * Marcin Witek
+ */
+
 buildscript {
 	ext {
 		springBootVersion = '2.0.6.RELEASE'
@@ -32,4 +38,5 @@ dependencies {
 	compileOnly('org.projectlombok:lombok')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation('org.springframework.security:spring-security-test')
+	testCompileOnly('org.projectlombok:lombok')
 }
