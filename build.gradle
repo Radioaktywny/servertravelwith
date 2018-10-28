@@ -5,15 +5,15 @@
  */
 
 buildscript {
-	ext {
-		springBootVersion = '2.0.6.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = '2.0.6.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'java'
@@ -26,17 +26,19 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 
 dependencies {
-	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
-	implementation('org.springframework.boot:spring-boot-starter-security')
-	implementation('org.springframework.boot:spring-boot-starter-web')
-	runtimeOnly('com.h2database:h2')
-	compileOnly('org.projectlombok:lombok')
-	testImplementation('org.springframework.boot:spring-boot-starter-test')
-	testImplementation('org.springframework.security:spring-security-test')
-	testCompileOnly('org.projectlombok:lombok')
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('org.springframework.boot:spring-boot-starter-security')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    compile('javax.xml.bind:jaxb-api')
+    runtimeOnly('com.h2database:h2')
+    compileOnly('org.projectlombok:lombok')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation('org.springframework.security:spring-security-test')
+    testCompileOnly('org.projectlombok:lombok')
 }
+

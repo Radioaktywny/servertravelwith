@@ -21,24 +21,12 @@ public class UserService {
     }
 
     public UserCreationStatus registerUser(UserRest requestedUser) {
-        userRepository.save(UserRest.createUser(requestedUser));
+        userRepository.save(UserRest.createUserEntity(requestedUser));
         return UserCreationStatus.ok();
     }
 
     public boolean logIn(String auth) {
         log.info("incoming auth {}", auth);
         return true;
-    }
-
-    public boolean isUserNameValid(UserRest requestedUser) {
-        return userRepository.findAllByUserName(requestedUser.getUserName()).isEmpty();
-    }
-
-    public boolean isEmailValid(UserRest requestedUser) {
-        return userRepository.findAllByEmail(requestedUser.getEmail()).isEmpty();
-    }
-
-    public boolean isPhoneNumberValid(UserRest requestedUser) {
-        return userRepository.findAllByPhoneNumber(requestedUser.getPhoneNumber()).isEmpty();
     }
 }

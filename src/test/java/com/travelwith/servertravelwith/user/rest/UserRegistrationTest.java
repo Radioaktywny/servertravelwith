@@ -8,9 +8,8 @@ package com.travelwith.servertravelwith.user.rest;
 
 import com.travelwith.servertravelwith.config.HttpSecurityConfiguration;
 import com.travelwith.servertravelwith.config.UserRestTestConfig;
-import com.travelwith.servertravelwith.user.UserConfiguration;
-import com.travelwith.servertravelwith.user.model.User;
-import com.travelwith.servertravelwith.user.repository.UserRepository;
+import com.travelwith.servertravelwith.user.model.UserCreationStatus;
+import com.travelwith.servertravelwith.user.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest(classes = {UserConfiguration.class, UserRestTestConfig.class, UserController.class, HttpSecurityConfiguration.class})
+@SpringBootTest(classes = {UserRestTestConfig.class, UserController.class, HttpSecurityConfiguration.class})
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
 @EnableWebMvc
@@ -37,20 +36,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class UserRegistrationTest {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
     public void whenCannotRegisterUserThenReturns500() throws Exception {
-        when(userRepository.save(any())).thenThrow(new IllegalArgumentException());
+        when(userService.registerUser(any())).thenThrow(new IllegalArgumentException());
         performRequest(REGISTRATION_URL, "{}").andExpect(status().is5xxServerError());
     }
 
     @Test
     public void whenRegisterUserThenReturns200() throws Exception {
-        when(userRepository.save(any())).thenReturn(new User());
+        when(userService.registerUser(any())).thenReturn(new UserCreationStatus());
         performRequest(REGISTRATION_URL, "{}").andExpect(status().is2xxSuccessful());
     }
 

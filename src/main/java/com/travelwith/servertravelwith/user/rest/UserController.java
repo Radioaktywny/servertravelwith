@@ -45,7 +45,8 @@ public class UserController {
     @PostMapping(LOGIN_URL)
     public ResponseEntity logIn(@RequestHeader String auth, HttpServletResponse response) {
         if (userService.logIn(auth)) {
-            response.addCookie(new Cookie("key", "Value"));
+            response.addCookie(new Cookie("key", "value"));
+            // todo managing cookies
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.status(500).build();

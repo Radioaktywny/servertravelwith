@@ -12,7 +12,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @Entity
@@ -22,18 +22,17 @@ public class User {
     @GeneratedValue
     private Long id;
 
-    @NotNull
+    @NotBlank
     @Column(unique = true)
     private String userName;
 
-    @NotNull
+    @NotBlank
     private String password;
 
-    @NotNull
+    @NotBlank
     @Column(unique = true)
     private String email;
 
-    @Column(unique = true)
     private String phoneNumber;
 
 }

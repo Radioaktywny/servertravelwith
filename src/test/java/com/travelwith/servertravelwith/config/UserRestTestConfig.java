@@ -6,7 +6,8 @@
 
 package com.travelwith.servertravelwith.config;
 
-import com.travelwith.servertravelwith.user.repository.UserRepository;
+import com.travelwith.servertravelwith.user.service.UserService;
+import com.travelwith.servertravelwith.user.service.UserValidatorService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,8 +17,13 @@ import static org.mockito.Mockito.mock;
 public class UserRestTestConfig {
 
     @Bean
-    UserRepository userRepository() {
-        return mock(UserRepository.class);
+    UserService userRepository() {
+        return mock(UserService.class);
+    }
+
+    @Bean
+    UserValidatorService userValidatorService() {
+        return mock(UserValidatorService.class);
     }
 
 
