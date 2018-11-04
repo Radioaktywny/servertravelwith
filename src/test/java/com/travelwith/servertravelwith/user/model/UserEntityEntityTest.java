@@ -18,7 +18,8 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class UserEntityEntityTest {
+public class
+UserEntityEntityTest {
 
     private static ValidatorFactory validatorFactory;
     private static Validator validator;
@@ -103,6 +104,13 @@ public class UserEntityEntityTest {
         Set<ConstraintViolation<UserEntity>> violations = validator.validate(userEntityToInsert);
         //then
         assertThat(violations).hasSize(1);
+    }
+
+    @Test
+    public void defaultRoleIsUser(){
+        UserEntity userEntity = createValidUserEntity();
+        //when then
+        assertThat(userEntity.getRole()).isEqualByComparingTo(Role.USER);
     }
 
     private UserEntity createValidUserEntity() {

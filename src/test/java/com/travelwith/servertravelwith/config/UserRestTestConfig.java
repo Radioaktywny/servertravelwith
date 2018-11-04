@@ -17,7 +17,7 @@ import static org.mockito.Mockito.mock;
 public class UserRestTestConfig {
 
     @Bean
-    UserService userRepository() {
+    UserService userService() {
         return mock(UserService.class);
     }
 
