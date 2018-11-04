@@ -1,2 +1,12 @@
 server:
   address: 0.0.0.0
+spring:
+  datasource:
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver
+    url: jdbc:hsqldb:file:db/travelwith
+    username: sa
+    password: sa
+    schema:
+  jpa:
+    hibernate:
+      ddl-auto: update

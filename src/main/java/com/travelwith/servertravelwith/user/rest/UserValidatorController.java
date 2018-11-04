@@ -22,9 +22,11 @@ import javax.validation.Valid;
 @Slf4j
 public class UserValidatorController {
 
-    static final String CHECK_EMAIL_URL = "/users/check/email";
-    static final String CHECK_USERNAME_URL = "/users/check/username";
-    static final String CHECK_PHONE_URL = "/users/check/phonenumber";
+    public static final String VALIDATION_CONTROLLER_PREFIX_URL = "/users/check";
+
+    static final String CHECK_EMAIL_URL = VALIDATION_CONTROLLER_PREFIX_URL + "/email";
+    static final String CHECK_USERNAME_URL = VALIDATION_CONTROLLER_PREFIX_URL + "/username";
+    static final String CHECK_PHONE_URL = VALIDATION_CONTROLLER_PREFIX_URL + "/phonenumber";
 
     @Autowired
     private UserValidatorService userValidatorService;

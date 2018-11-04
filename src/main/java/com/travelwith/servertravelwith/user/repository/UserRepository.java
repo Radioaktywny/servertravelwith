@@ -7,17 +7,17 @@
 package com.travelwith.servertravelwith.user.repository;
 
 
-import com.travelwith.servertravelwith.user.model.User;
+import com.travelwith.servertravelwith.user.model.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
-    List<User> findAllByUserName(String userName);
+    List<UserEntity> findAllByUserName(String userName);
 
-    List<User> findAllByEmail(String email);
+    List<UserEntity> findAllByEmail(String email);
 
-    List<User> findAllByPhoneNumber(String userName);
+    List<UserEntity> findAllByPhoneNumber(String userName);
 
 }

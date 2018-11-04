@@ -21,12 +21,12 @@ public class UserRest {
 
     private String phoneNumber;
 
-    public static User createUserEntity(UserRest requestedUser) {
-        User user = new User();
-        user.setEmail(requestedUser.getEmail());
-        user.setUserName(requestedUser.getUserName());
-        user.setPassword(requestedUser.getPassword());
-        user.setPhoneNumber(requestedUser.getPhoneNumber());
-        return user;
+    public static UserEntity createUserEntity(UserRest requestedUser) {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setEmail(requestedUser.getEmail());
+        userEntity.setUserName(requestedUser.getUserName());
+        userEntity.setPassword(requestedUser.getPassword());
+        userEntity.setPhoneNumber(requestedUser.getPhoneNumber());
+        return userEntity;
     }
 }

@@ -6,7 +6,7 @@
 
 package com.travelwith.servertravelwith.user.repository;
 
-import com.travelwith.servertravelwith.user.model.User;
+import com.travelwith.servertravelwith.user.model.UserEntity;
 import com.travelwith.servertravelwith.user.model.UserRest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +19,7 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class UserEntityUniquesTest {
+public class UserEntityEntityUniquesTest {
 
     @Autowired
     TestEntityManager testEntityManager;
@@ -39,20 +39,20 @@ public class UserEntityUniquesTest {
     @Test
     public void whenTryingToAddUserWithUniqueFieldsThenWillBeAddedSuccessfully() {
         testEntityManager.persistAndFlush(createUser("userName1", "email@first", "pass", "12345679"));
-        final User userToInsert = createUser("userName2", "email@second", "pass1234", "12345679");
-        User inserted = testEntityManager.persistAndFlush(userToInsert);
-        assertUserFields(inserted, userToInsert);
+        final UserEntity userEntityToInsert = createUser("userName2", "email@second", "pass1234", "12345679");
+        UserEntity inserted = testEntityManager.persistAndFlush(userEntityToInsert);
+        assertUserFields(inserted, userEntityToInsert);
     }
 
-    private void assertUserFields(User inserted, User userToInsert) {
-        assertThat(inserted.getEmail()).isEqualToIgnoringCase(userToInsert.getEmail());
-        assertThat(inserted.getPassword()).isEqualToIgnoringCase(userToInsert.getPassword());
-        assertThat(inserted.getUserName()).isEqualToIgnoringCase(userToInsert.getUserName());
-        assertThat(inserted.getPhoneNumber()).isEqualToIgnoringCase(userToInsert.getPhoneNumber());
+    private void assertUserFields(UserEntity inserted, UserEntity userEntityToInsert) {
+        assertThat(inserted.getEmail()).isEqualToIgnoringCase(userEntityToInsert.getEmail());
+        assertThat(inserted.getPassword()).isEqualToIgnoringCase(userEntityToInsert.getPassword());
+        assertThat(inserted.getUserName()).isEqualToIgnoringCase(userEntityToInsert.getUserName());
+        assertThat(inserted.getPhoneNumber()).isEqualToIgnoringCase(userEntityToInsert.getPhoneNumber());
         assertThat(inserted.getId()).isGreaterThan(0L);
     }
 
-    private User createUser(String userName, String email, String password, String phone) {
+    private UserEntity createUser(String userName, String email, String password, String phone) {
         return UserRest.createUserEntity(UserRest.builder()
                 .email(email)
                 .userName(userName)

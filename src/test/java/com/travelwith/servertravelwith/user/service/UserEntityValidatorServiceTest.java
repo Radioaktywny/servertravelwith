@@ -7,7 +7,7 @@
 package com.travelwith.servertravelwith.user.service;
 
 
-import com.travelwith.servertravelwith.user.model.User;
+import com.travelwith.servertravelwith.user.model.UserEntity;
 import com.travelwith.servertravelwith.user.model.UserRest;
 import com.travelwith.servertravelwith.user.repository.UserRepository;
 import org.junit.Before;
@@ -20,7 +20,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class UserValidatorServiceTest {
+public class UserEntityValidatorServiceTest {
 
     private UserValidatorService userService;
 
@@ -52,9 +52,9 @@ public class UserValidatorServiceTest {
 
     @Test
     public void whenThereIsUserWithTheSamePropertyThenPropertyIsIncorrect() {
-        when(userRepository.findAllByUserName(any())).thenReturn(Collections.singletonList(new User()));
-        when(userRepository.findAllByEmail(any())).thenReturn(Collections.singletonList(new User()));
-        when(userRepository.findAllByPhoneNumber(any())).thenReturn(Collections.singletonList(new User()));
+        when(userRepository.findAllByUserName(any())).thenReturn(Collections.singletonList(new UserEntity()));
+        when(userRepository.findAllByEmail(any())).thenReturn(Collections.singletonList(new UserEntity()));
+        when(userRepository.findAllByPhoneNumber(any())).thenReturn(Collections.singletonList(new UserEntity()));
 
         assertThat(userService.isUserNameValid(userWithUsername("username"))).isFalse();
         assertThat(userService.isEmailValid(userWithEmail("email@email.com"))).isFalse();
