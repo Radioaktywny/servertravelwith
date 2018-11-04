@@ -33,7 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 @EnableWebMvc
 @AutoConfigureMockMvc
-public class UserRegistrationTest {
+public class UserEntityRegistrationTest {
 
     @Autowired
     private UserService userService;

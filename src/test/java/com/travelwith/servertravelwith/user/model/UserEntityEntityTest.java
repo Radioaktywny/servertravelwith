@@ -18,7 +18,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class UserEntityTest {
+public class UserEntityEntityTest {
 
     private static ValidatorFactory validatorFactory;
     private static Validator validator;
@@ -36,20 +36,20 @@ public class UserEntityTest {
 
     @Test
     public void phoneNumberFiledIsNotRequired() {
-        User userToInsert = createValidUserEntity();
-        userToInsert.setPhoneNumber(null);
+        UserEntity userEntityToInsert = createValidUserEntity();
+        userEntityToInsert.setPhoneNumber(null);
         //when
-        Set<ConstraintViolation<User>> violations = validator.validate(userToInsert);
+        Set<ConstraintViolation<UserEntity>> violations = validator.validate(userEntityToInsert);
         //then
         assertThat(violations).isEmpty();
     }
 
     @Test
     public void userNameIsRequired() {
-        User userToInsert = createValidUserEntity();
-        userToInsert.setUserName(null);
+        UserEntity userEntityToInsert = createValidUserEntity();
+        userEntityToInsert.setUserName(null);
         //when
-        Set<ConstraintViolation<User>> violations = validator.validate(userToInsert);
+        Set<ConstraintViolation<UserEntity>> violations = validator.validate(userEntityToInsert);
         //then
         assertThat(violations).hasSize(1);
     }
@@ -57,55 +57,55 @@ public class UserEntityTest {
 
     @Test
     public void emailIsRequired() {
-        User userToInsert = createValidUserEntity();
-        userToInsert.setEmail(null);
+        UserEntity userEntityToInsert = createValidUserEntity();
+        userEntityToInsert.setEmail(null);
         //when
-        Set<ConstraintViolation<User>> violations = validator.validate(userToInsert);
+        Set<ConstraintViolation<UserEntity>> violations = validator.validate(userEntityToInsert);
         //then
         assertThat(violations).hasSize(1);
     }
 
     @Test
     public void passwordIsRequired() {
-        User userToInsert = createValidUserEntity();
-        userToInsert.setPassword(null);
+        UserEntity userEntityToInsert = createValidUserEntity();
+        userEntityToInsert.setPassword(null);
         //when
-        Set<ConstraintViolation<User>> violations = validator.validate(userToInsert);
+        Set<ConstraintViolation<UserEntity>> violations = validator.validate(userEntityToInsert);
         //then
         assertThat(violations).hasSize(1);
     }
 
     @Test
     public void userNameCannotBeEmpty() {
-        User userToInsert = createValidUserEntity();
-        userToInsert.setUserName("");
+        UserEntity userEntityToInsert = createValidUserEntity();
+        userEntityToInsert.setUserName("");
         //when
-        Set<ConstraintViolation<User>> violations = validator.validate(userToInsert);
+        Set<ConstraintViolation<UserEntity>> violations = validator.validate(userEntityToInsert);
         //then
         assertThat(violations).hasSize(1);
     }
 
     @Test
     public void emailCannotBeEmpty() {
-        User userToInsert = createValidUserEntity();
-        userToInsert.setEmail("");
+        UserEntity userEntityToInsert = createValidUserEntity();
+        userEntityToInsert.setEmail("");
         //when
-        Set<ConstraintViolation<User>> violations = validator.validate(userToInsert);
+        Set<ConstraintViolation<UserEntity>> violations = validator.validate(userEntityToInsert);
         //then
         assertThat(violations).hasSize(1);
     }
 
     @Test
     public void passwordCannotBeEmpty() {
-        User userToInsert = createValidUserEntity();
-        userToInsert.setPassword("");
+        UserEntity userEntityToInsert = createValidUserEntity();
+        userEntityToInsert.setPassword("");
         //when
-        Set<ConstraintViolation<User>> violations = validator.validate(userToInsert);
+        Set<ConstraintViolation<UserEntity>> violations = validator.validate(userEntityToInsert);
         //then
         assertThat(violations).hasSize(1);
     }
 
-    private User createValidUserEntity() {
+    private UserEntity createValidUserEntity() {
         return UserRest.createUserEntity(UserRest.builder()
                 .email("email@email")
                 .userName("username")

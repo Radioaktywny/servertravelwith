@@ -33,7 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 @EnableWebMvc
 @AutoConfigureMockMvc
-public class UserValidatorControllerTest {
+public class UserEntityValidatorControllerTest {
 
     @Autowired
     private UserValidatorService userValidatorService;

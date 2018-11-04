@@ -7,6 +7,7 @@
 package com.travelwith.servertravelwith.user.service;
 
 import com.travelwith.servertravelwith.user.model.UserCreationStatus;
+import com.travelwith.servertravelwith.user.model.UserEntity;
 import com.travelwith.servertravelwith.user.model.UserRest;
 import com.travelwith.servertravelwith.user.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -21,12 +22,9 @@ public class UserService {
     }
 
     public UserCreationStatus registerUser(UserRest requestedUser) {
-        userRepository.save(UserRest.createUserEntity(requestedUser));
+        UserEntity userEntityEntity = UserRest.createUserEntity(requestedUser);
+        userRepository.save(userEntityEntity);
         return UserCreationStatus.ok();
     }
 
-    public boolean logIn(String auth) {
-        log.info("incoming auth {}", auth);
-        return true;
-    }
 }

@@ -16,7 +16,7 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 @Entity
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue

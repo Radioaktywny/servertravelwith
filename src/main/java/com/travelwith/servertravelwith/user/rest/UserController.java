@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
@@ -25,9 +24,9 @@ import javax.validation.Valid;
 @Slf4j
 public class UserController {
 
-    static final String REGISTRATION_URL = "/users/register";
+    public static final String REGISTRATION_URL = "/users/register";
 
-    private static final String LOGIN_URL = "/users/login";
+    public static final String LOGIN_URL = "/users/login";
 
     @Autowired
     private UserService userService;
@@ -38,18 +37,15 @@ public class UserController {
             return ResponseEntity.ok(userService.registerUser(requestedUser));
         } catch (Exception e) {
             log.error("Cannot create user", e);
-            return ResponseEntity.status(500).body(UserCreationStatus.error("User creation failed"));
+            return ResponseEntity.status(500).body(UserCreationStatus.error("UserEntity creation failed"));
         }
     }
 
     @PostMapping(LOGIN_URL)
-    public ResponseEntity logIn(@RequestHeader String auth, HttpServletResponse response) {
-        if (userService.logIn(auth)) {
-            response.addCookie(new Cookie("key", "value"));
-            // todo managing cookies
-            return ResponseEntity.ok().build();
-        }
-        return ResponseEntity.status(500).build();
+    public ResponseEntity logIn(HttpServletResponse response) {
+        response.addCookie(new Cookie("key", "value"));
+        // todo managing cookies
+        return ResponseEntity.ok().build();
     }
 
 
