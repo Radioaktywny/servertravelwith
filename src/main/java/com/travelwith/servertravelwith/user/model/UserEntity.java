@@ -7,12 +7,11 @@
 package com.travelwith.servertravelwith.user.model;
 
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -34,5 +33,9 @@ public class UserEntity {
     private String email;
 
     private String phoneNumber;
+
+    @NotNull
+    @Enumerated
+    private Role role = Role.USER;
 
 }

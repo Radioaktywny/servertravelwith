@@ -6,11 +6,13 @@
 
 package com.travelwith.servertravelwith.user.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
+@AllArgsConstructor
 public class UserRest {
 
     private String userName;

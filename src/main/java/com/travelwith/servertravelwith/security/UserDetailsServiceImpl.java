@@ -29,7 +29,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return User
                 .withUsername(userEntity.getUserName())
                 .password(NO_OP_PASSWORD_ENCODER_PREFIX + userEntity.getPassword())
-                .roles("USERS").build();
+                .roles(userEntity.getRole().getRoleName()).build();
     }
 
     private UserEntity getUserEntityFromRepository(String userName) {

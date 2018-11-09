@@ -6,6 +6,7 @@
 
 package com.travelwith.servertravelwith.security;
 
+import com.travelwith.servertravelwith.user.model.Role;
 import com.travelwith.servertravelwith.user.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,9 +33,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(REGISTRATION_URL).permitAll()
-                .antMatchers(VALIDATION_CONTROLLER_PREFIX_URL).permitAll()
-                .antMatchers(LOGIN_URL).authenticated().and().httpBasic();
+                .antMatchers(REGISTRATION_URL).hasRole((Role.ADMIN.getRoleName()))
+                .antMatchers(VALIDATION_CONTROLLER_PREFIX_URL + "/**").hasRole((Role.ADMIN.getRoleName()))
+                .antMatchers(LOGIN_URL).hasRole(Role.USER.getRoleName())
+                .and()
+                .httpBasic();
         http.csrf().disable();
     }
 
