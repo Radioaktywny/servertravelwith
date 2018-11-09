@@ -34,7 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers(REGISTRATION_URL).hasRole((Role.ADMIN.getRoleName()))
-                .antMatchers(VALIDATION_CONTROLLER_PREFIX_URL).hasRole((Role.ADMIN.getRoleName()))
+                .antMatchers(VALIDATION_CONTROLLER_PREFIX_URL + "/**").hasRole((Role.ADMIN.getRoleName()))
                 .antMatchers(LOGIN_URL).hasRole(Role.USER.getRoleName())
                 .and()
                 .httpBasic();
